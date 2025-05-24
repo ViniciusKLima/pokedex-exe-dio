@@ -8,7 +8,6 @@
 }
 
 .pokemon {
-  background-image: url("../assets/images/pokeball-card.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -35,10 +34,9 @@
 .pokemon .number {
   --size: 30px;
   align-items: center;
-  background-color: var(--color-white);
   border-bottom-left-radius: 20px;
   border-top-right-radius: 13px;
-  color: var(--color-black);
+  color: var(--color-white);
   display: flex;
   font-size: 0.625rem;
   font-weight: 700;
@@ -55,7 +53,6 @@
   font-size: 1.5rem;
   margin-bottom: 0.6rem;
   text-transform: capitalize;
-  text-shadow: 2px 2px 5px var(--color-name-shadow);
 }
 
 .pokemon .detail {
@@ -117,8 +114,6 @@
 }
 
 .pokemon.selected .avatar {
-  animation: appear 0.8s;
-  animation-play-state: running;
   filter: drop-shadow(10px 10px 5px var(--color-poke-shadow));
   height: 250px;
   left: 50%;
@@ -169,23 +164,6 @@
   color: var(--color-purple);
   cursor: pointer;
   transform: scale(1.025);
-}
-
-@keyframes appear {
-  0% {
-    opacity: 0;
-    scale: 0.5;
-    translate: 30px;
-  }
-
-  60% {
-    scale: 1;
-    translate: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
 }
 
 @media screen and (max-height: 576px) and (orientation: landscape) {

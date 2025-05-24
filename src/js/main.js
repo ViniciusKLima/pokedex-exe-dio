@@ -8,7 +8,7 @@ const maxRecords = 151;
 const limit = 10;
 let offset = 0;
 
-const createPokemonElement = pokemon => {
+const createPokemonElement = (pokemon) => {
   const { name, number, type, types, photo, weight, height } = pokemon;
 
   return `
@@ -19,7 +19,7 @@ const createPokemonElement = pokemon => {
         <div class="detail">
           <ol class="types">
             ${types
-              .map(pType => `<li class="type ${pType}">${pType}</li>`)
+              .map((pType) => `<li class="type ${pType}">${pType}</li>`)
               .join("")}
           </ol>
 
@@ -44,7 +44,9 @@ const createPokemonElement = pokemon => {
 const loadPokemonItens = async (offset, limit) => {
   try {
     const pokemons = await pokeApi.getPokemons(offset, limit);
-    const pokemonCards = pokemons.map(pokemon => createPokemonElement(pokemon));
+    const pokemonCards = pokemons.map((pokemon) =>
+      createPokemonElement(pokemon)
+    );
     pokemonList.innerHTML += pokemonCards.join("");
   } catch ({ name, message }) {
     const msg = `Erro "${name}" ao carregar os Pokémons na tela: ${message}`;
@@ -72,7 +74,7 @@ const loadMorePokemons = () => {
   loadMoreButton.parentElement.removeChild(loadMoreButton);
 };
 
-const showCardDetails = e => {
+const showCardDetails = (e) => {
   const card = e.target.closest(".pokemon");
   if (!card) return;
   const selectedCard = pokemonList.querySelector(
@@ -85,7 +87,7 @@ const showCardDetails = e => {
 loadMoreButton.addEventListener("click", loadMorePokemons);
 pokemonList.addEventListener("click", showCardDetails);
 
-pokemonModal.addEventListener("click", e => {
+pokemonModal.addEventListener("click", (e) => {
   if (e.target !== e.currentTarget) return;
   closeModal();
 });
